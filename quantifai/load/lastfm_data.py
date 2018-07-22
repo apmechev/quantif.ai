@@ -1,20 +1,20 @@
 import pylast
 import time
 import datetime
-import apikeys
+import apikeys_apmechev as apikeys
 import pandas as pd
 import pickle
 import gzip
 
-API_KEY=apikeys.lastfm['APIKEY']
-API_SECRET=apikeys.lastfm['APISECRET']
-PASSWORD_HASH=apikeys.lastfm['PASSWORD_HASH']
+API_KEY = apikeys.lastfm['APIKEY']
+API_SECRET = apikeys.lastfm['APISECRET']
+PASSWORD_HASH = apikeys.lastfm['PASSWORD_HASH']
 
 username = "apmechev"
-password_hash=PASSWORD_HASH
+password_hash = PASSWORD_HASH
 
 network = pylast.LastFMNetwork(api_key=API_KEY, api_secret=API_SECRET, username=username, password_hash=password_hash)
-me=pylast.AuthenticatedUser(network)
+me = pylast.AuthenticatedUser(network)
 
 
 e=time.mktime(datetime.datetime.strptime("001/2012", "%j/%Y").timetuple())
