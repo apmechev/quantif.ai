@@ -12,7 +12,7 @@ import pdb
 import apikeys
 
 url_template = 'https://api.foursquare.com/v2/users/self/checkins?limit=250&oauth_token={}&v=20131026&offset={}'
-
+headers={'User-Agent': 'My User Agent 1.0',}
 # If you navigate to https://developer.foursquare.com/docs/explore, Foursquare
 # will generate an OAuth token for you automatically. Copy and paste that token
 # below.
@@ -41,8 +41,8 @@ def return_category(item):
     return None
 
 
-# This will save your foursquare_checkins to a file in the same directory as
-# this script.
+## This will save your foursquare_checkins to a file in the same directory as
+#  this script.
 #with open("/home/apmechev/quantifai.me/raw_data/foursquare/foursquare_checkins.json", 'w') as f:
 #    while True:
 #        response = requests.get(url_template.format(oauth_token, offset))
@@ -55,7 +55,7 @@ def return_category(item):
 #    f.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
 
 def main():
-	response = requests.get(url_template.format(oauth_token, offset))
+	response = requests.get(url_template.format(oauth_token, offset), headers=headers)
 	data=[]
 	if response.ok:
 		data.append(response.json())
